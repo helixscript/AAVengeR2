@@ -192,3 +192,5 @@ Optimized buildStdFragments multihits and patched a potential issue where the sa
 Production freeze 12/2024
 3.0.1
 Change the way anchorReadSeq flows through the pipeline.
+3.0.2
+Fixed initiation functions for buildGenomeObjects.R

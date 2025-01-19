@@ -11,10 +11,7 @@ library(parallel)
 tmpFile <- paste0(stringi::stri_rand_strings(30, 1, '[A-Za-z0-9]'), collapse = '')
 
 # Read in the configuration file and perform basic sanity checks.
-args <- commandArgs(trailingOnly=TRUE)
-if(length(args) == 0) stop('Expected at least one command line argument')
-source(file.path(yaml::read_yaml(args[1])$softwareDir, 'lib.R'))
-opt <- startModule(args)
+opts <- yaml::read_yaml(commandArgs(trailingOnly=TRUE))
 
 logFile <- paste0(opts$refGenomeName, '_buildGenomeObjects.log')
 write(date(), logFile, append = FALSE)
