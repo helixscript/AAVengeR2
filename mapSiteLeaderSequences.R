@@ -21,9 +21,9 @@ opt <- startModule(args)
 
 
 createOuputDir()
-if(! dir.exists(file.path(opt$outputDir, opt$prepReads_outputDir))) dir.create(file.path(opt$outputDir, opt$mapSiteLeaderSequences_outputDir))
-if(! dir.exists(file.path(opt$outputDir, opt$prepReads_outputDir, 'dbs'))) dir.create(file.path(opt$outputDir, opt$mapSiteLeaderSequences_outputDir, 'dbs'))
-if(! dir.exists(file.path(opt$outputDir, opt$prepReads_outputDir, 'tmp'))) dir.create(file.path(opt$outputDir, opt$mapSiteLeaderSequences_outputDir, 'tmp'))
+if(! dir.exists(file.path(opt$outputDir, opt$prepReads_outputDir))) dir.create(file.path(opt$outputDir, opt$mapSiteLeaderSequences_outputDir), showWarnings = FALSE)
+if(! dir.exists(file.path(opt$outputDir, opt$prepReads_outputDir, 'dbs'))) dir.create(file.path(opt$outputDir, opt$mapSiteLeaderSequences_outputDir, 'dbs'), showWarnings = FALSE)
+if(! dir.exists(file.path(opt$outputDir, opt$prepReads_outputDir, 'tmp'))) dir.create(file.path(opt$outputDir, opt$mapSiteLeaderSequences_outputDir, 'tmp'), showWarnings = FALSE)
 invisible(file.remove(list.files(file.path(opt$outputDir, opt$mapSiteLeaderSequences_outputDir, 'tmp'), full.names = TRUE)))
 
 # Start log.

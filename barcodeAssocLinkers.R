@@ -18,7 +18,7 @@ opt <- startModule(args)
 
 if(! dir.exists(file.path(opt$outputDir, opt$barcodeAssocLinkers_outputDir))) dir.create(file.path(opt$outputDir, opt$barcodeAssocLinkers_outputDir))
 
-s <- readr::read_tsv(opt$barcodeAssocLinkers_sampleDataFile)
+s <- readr::read_tsv(opt$barcodeAssocLinkers_sampleDataFile, show_col_types = FALSE)
 
 s$indexLinker <- paste0(s$index1Seq, substr(s$adriftReadLinkerSeq, 1, opt$barcodeAssocLinkers_adriftReadUniqueLinkerLength)) 
 

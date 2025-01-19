@@ -25,8 +25,8 @@ source(file.path(yaml::read_yaml(args[1])$softwareDir, 'lib.R'))
 opt <- startModule(args)
 
 createOuputDir()
-dir.create(file.path(opt$outputDir, opt$buildStdFragments_outputDir))
-dir.create(file.path(opt$outputDir, opt$buildStdFragments_outputDir, 'tmp'))
+dir.create(file.path(opt$outputDir, opt$buildStdFragments_outputDir), showWarnings = FALSE)
+dir.create(file.path(opt$outputDir, opt$buildStdFragments_outputDir, 'tmp'), showWarnings = FALSE)
 
 # Start log.
 opt$defaultLogFile <- file.path(opt$outputDir, opt$buildStdFragments_outputDir, 'log')

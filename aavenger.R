@@ -92,7 +92,7 @@ if(any(grepl('\\-\\-', args))){
     }
     
     tmpDir <- paste0(stringi::stri_rand_strings(30, 1, '[A-Za-z0-9]'), collapse = '')
-    dir.create(tmpDir)
+    dir.create(tmpDir, showWarnings = FALSE)
     
     message('Downloading genome data.')
     system(paste0('wget -q -O ', tmpDir, '/archive.tar ', o$remoteDataURL, '/', opt$install.genome, '.tar'))
@@ -148,11 +148,11 @@ checkSoftware()
 
 
 if(! opt$calledFromCore){
-  dir.create(file.path(opt$outputDir, 'src'))
+  dir.create(file.path(opt$outputDir, 'src'), showWarnings = FALSE)
   invisible(sapply(list.files(opt$softwareDir, pattern = '*.R', full.names = TRUE), file.copy, to = file.path(opt$outputDir, 'src')))
   invisible(file.copy(opt$sampleConfigFile, file.path(opt$outputDir, 'src', 'sampleData.tsv')))
   invisible(file.copy(opt$configFile, file.path(opt$outputDir, 'src', 'config.yml')))
-  dir.create(file.path(opt$outputDir, 'src', 'version'))
+  dir.create(file.path(opt$outputDir, 'src', 'version'), showWarnings = FALSE)
   invisible(file.copy(list.files(file.path(opt$softwareDir, 'version'), full.names = TRUE), file.path(opt$outputDir, 'src', 'version'), recursive = TRUE))
 }
 

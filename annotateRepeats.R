@@ -20,7 +20,7 @@ source(file.path(yaml::read_yaml(args[1])$softwareDir, 'lib.R'))
 opt <- startModule(args)
 
 createOuputDir()
-dir.create(file.path(opt$outputDir, opt$annotateRepeats_outputDir))
+dir.create(file.path(opt$outputDir, opt$annotateRepeats_outputDir), showWarnings = FALSE)
 
 # Start log.
 opt$defaultLogFile <- file.path(opt$outputDir, opt$annotateRepeats_outputDir, 'log')
@@ -63,7 +63,7 @@ invisible(lapply(unique(sites$refGenome), function(x){
 
 sites <- bind_rows(lapply(unique(sites$refGenome), function(x){
   updateLog(paste0('Loading annotation table: ', file.path(opt$softwareDir, 'data', 'genomeAnnotations', paste0(x, '.repeatTable.gz'))))
-  r <- readr::read_tsv(file.path(opt$softwareDir, 'data', 'genomeAnnotations', paste0(x, '.repeatTable.gz')))
+  r <- readr::read_tsv(file.path(opt$softwareDir, 'data', 'genomeAnnotations', paste0(x, '.repeatTable.gz')), show_col_types = FALSE)
   
   r$strand <- sub('C', '-', r$strand)
   r <- subset(r, strand %in% c('+', '-'))
@@ -124,7 +124,7 @@ if(file.exists(file.path(opt$outputDir, opt$buildStdFragments_outputDir, 'multiH
   o <- left_join(o, distinct(select(sites, sample, refGenome)), by = 'sample')
   
   o <- bind_rows(lapply(unique(o$refGenome), function(x){
-    r <- readr::read_tsv(file.path(opt$softwareDir, 'data', 'genomeAnnotations', paste0(x, '.repeatTable.gz')))
+    r <- readr::read_tsv(file.path(opt$softwareDir, 'data', 'genomeAnnotations', paste0(x, '.repeatTable.gz')), show_col_types = FALSE)
     r$strand <- sub('C', '-', r$strand)
     r <- subset(r, strand %in% c('+', '-'))
     g <- makeGRangesFromDataFrame(select(r, query_seq, query_start, query_end, strand, repeat_name, repeat_class), 
