@@ -200,3 +200,5 @@ Added additional flags to left_join(), dir.create(), and read_tsv() to stop warn
 3.0.4
 Updated predictPCRartifacts to report PCR artifact type 2 flags based on alignment melting temperatures.
 Updated config.yml with updated predictPCRartifacts parameters.
+3.0.5
+Removed absolute paths for system calls from anchorReadRearrangments.

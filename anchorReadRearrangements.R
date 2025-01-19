@@ -34,7 +34,6 @@ logo <- readLines(file.path(opt$softwareDir, 'figures', 'ASCII_logo.txt'))
 write(logo, opt$defaultLogFile, append = FALSE)
 write(paste0('version: ', readLines(file.path(opt$softwareDir, 'version', 'version')), "\n"), opt$defaultLogFile, append = TRUE)
 
-
 quitOnErorr <- function(msg){
   updateLog(msg)
   message(msg)
@@ -317,7 +316,7 @@ r <- bind_rows(lapply(split(reads, paste(reads$vectorFastaFile, reads$uniqueSamp
       files <- list.files(file.path(opt$outputDir, opt$anchorReadRearrangements_outputDir, 'dbs'), full.names = TRUE)
       if(length(files) > 0) invisible(file.remove(files))
       
-      system(paste0('/home/ubuntu/software/ncbi-blast-2.12.0+/bin/makeblastdb -in ', file.path(opt$softwareDir, 'data', 'vectors', x$vector[1]), 
+      system(paste0('makeblastdb -in ', file.path(opt$softwareDir, 'data', 'vectors', x$vector[1]), 
                     ' -dbtype nucl -out ', file.path(opt$outputDir, opt$anchorReadRearrangements_outputDir, 'dbs', 'd')), ignore.stderr = FALSE)
       
       # Here we cluster representatives to control for wiggle between recombined forms.
@@ -330,7 +329,7 @@ r <- bind_rows(lapply(split(reads, paste(reads$vectorFastaFile, reads$uniqueSamp
       #
       # (!) Here we increase the penalty from the default -3 to -4 to prevent runs of mismatches to come through if followed by a string of matches.
       #
-      system(paste0('/home/ubuntu/software/ncbi-blast-2.12.0+/bin/blastn -penalty -4 -max_target_seqs 10000 -gapopen 10 -gapextend 5 -dust no -soft_masking false -word_size 5 -evalue 100 -outfmt 6 -query repReads.fasta -db ',
+      system(paste0('blastn -penalty -4 -max_target_seqs 10000 -gapopen 10 -gapextend 5 -dust no -soft_masking false -word_size 5 -evalue 100 -outfmt 6 -query repReads.fasta -db ',
                     file.path(opt$outputDir, opt$anchorReadRearrangements_outputDir, 'dbs', 'd'),
                     ' -num_threads ', opt$anchorReadRearrangements_CPUs  ,' -out repReads.blast'), ignore.stdout = TRUE, ignore.stderr = TRUE)
       
