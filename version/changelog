@@ -197,3 +197,6 @@ Fixed initiation functions for buildGenomeObjects.R
 3.0.3
 Added patch to prepReads to handle exception when no reads are returned while building rearrangement models.
 Added additional flags to left_join(), dir.create(), and read_tsv() to stop warnings. 
+3.0.4
+Updated predictPCRartifacts to report PCR artifact type 2 flags based on alignment melting temperatures.
+Updated config.yml with updated predictPCRartifacts parameters.

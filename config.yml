@@ -195,6 +195,9 @@ callNearestGenes_boundaries:
   macFas5:
     TUs:   macFas5.humanXenoRef.TUs.rds
     exons: macFas5.humanXenoRef.exons.rds
+  chlSab2:
+    TUs:   chlSab2.humanXenoRef.TUs.rds
+    exons: chlSab2.humanXenoRef.exons.rds
 
 
 # mapSiteLeaderSequences module.
@@ -212,15 +215,15 @@ mapSiteLeaderSequences_maxMissingTailNTs: 5
 # predictPCRartifacts module.
 # ~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
 predictPCRartifacts_CPUs: 15
-predictPCRartifacts_inputFile: callNearestGenes/sites.rds
+predictPCRartifacts_inputFile: annotateRepeats/sites.rds
 predictPCRartifacts_outputDir: predictPCRartifacts
-predictPCRartifacts_adjacentSeqLength: 14
-predictPCRartifacts_minReportHalfMatches: 5
-predictPCRartifacts_minReportMatches: 10
-predictPCRartifacts_maxAlnGaps: 1
+predictPCRartifacts_adjacentSeqLength: 20
+predictPCRartifacts_minReportHalfMatches: 7
+predictPCRartifacts_minReportMatches: 15
 predictPCRartifacts_wordSize: 5
-predictPCRartifacts_gapOpeningPenalty: 10
-predictPCRartifacts_gapExtensionPenalty: 5
+predictPCRartifacts_gapOpeningPenalty: 3
+predictPCRartifacts_gapExtensionPenalty: 2
+predictPCRartifacts_minMeltingTemp: 50
 predictPCRartifacts_addAfter: posid
 
 
