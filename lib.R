@@ -114,10 +114,8 @@ ppNum <- function(n) format(n, big.mark = ",", scientific = FALSE, trim = TRUE)
 
 
 createOuputDir <- function(){
-  if(! dir.exists(opt$outputDir)){
-    invisible(sapply(readLines(file.path(opt$softwareDir, 'figures', 'ASCII_logo.txt')), message))
-    
-    dir.create(file.path(opt$outputDir, showWarnings = FALSE))
+  if(! dir.exists(opt$outputDir)){    
+    dir.create(file.path(opt$outputDir), showWarnings = FALSE)
     
     if(! dir.exists(opt$outputDir)){
       message('Error: Can not create the output directory.')

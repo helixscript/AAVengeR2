@@ -139,6 +139,10 @@ source(file.path(yaml::read_yaml(args[1])$softwareDir, 'lib.R'))
 opt <- startModule(args)
 
 
+# Show AAVengeR banner.
+if(! opt$calledFromCore) invisible(sapply(readLines(file.path(opt$softwareDir, 'figures', 'ASCII_logo.txt')), message))
+
+
 # Create main output folder and make a copy of the source code and configurations.
 createOuputDir()
 

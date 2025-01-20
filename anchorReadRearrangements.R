@@ -389,6 +389,7 @@ stopCluster(cluster)
 
 saveRDS(r, file.path(opt$outputDir, opt$anchorReadRearrangements_outputDir, 'result.rds'))
 openxlsx::write.xlsx(r, file.path(opt$outputDir, opt$anchorReadRearrangements_outputDir, 'result.xlsx'))
+readr::write_tsv(r, file.path(opt$outputDir, opt$anchorReadRearrangements_outputDir, 'result.tsv'))
 
 updateLog('anchorReadRearrangements completed.')
 
